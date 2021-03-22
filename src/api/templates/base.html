@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <header>
+      <style>
+        button.btn{
+          color: rgb(49, 45, 40);
+          padding: 10px 25px;
+          background: transparent;
+          border: 1px solid rgb(0, 0, 0);
+          outline: none;
+          cursor: pointer;
+        #navbarSupportedContent{
+          position: relative;
+          overflow: hidden;
+        }
+        }
+      </style>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light" id='content'>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <a class="navbar-brand" href="#">
+            <img src="./Users/ASERUchan/Documents/projects/second/src/api/templates/logo.png" alt="ASERU" width="90" height="35" class="d-inline-block align-top"></a>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'api:home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'api:tag_list'%}">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'api:post_create'%}">Create Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'api:tag_create'%}">Create Tag</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn" type="submit">Search</button>
+          </form>
+          <form class="form-inline my-2 my-lg-0">
+            <a class="nav-link" href="{% url 'authe:login'%}">Log in</a>
+          </form>
+          <form class="form-inline my-2 my-lg-0">
+            <a class="nav-link" href="{% url 'authe:register'%}">Sign up</a>
+          </form>
+          <form class="form-inline my-2 my-lg-0">
+            <a class="nav-link" href="{% url 'authe:logout'%}">Log out</a>
+          </form>
+        </div>
+      </nav>
+    </header>
+    {% block content %}
+    {% for post in posts %}
+      <div class="card bg-dark text-white">
+        <img src="..." class="card-img" alt="...">
+        <div class="card-img-overlay">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.body}}</p>
+          <p class="card-text">Last updated 3 mins ago</p>
+        </div>
+      </div>
+    {% endfor %}
+    {% endblock content %}
+
+</body>
+</html>

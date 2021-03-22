@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% block content %}
+{% for tag in tags %}
+    <!-- <h1>{{post.title}}</h1> -->
+    <!-- <style>
+        p.card-text {
+         white-space: nowrap; /* Запрещаем перенос строк */
+         overflow: hidden; /* Обрезаем все, что не помещается в область */
+         padding: 5px; /* Поля вокруг текста */
+         text-overflow: ellipsis; /* Добавляем многоточие */
+        }
+    </style> -->
+    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+        <div class="card-body">
+          <h1 class="card-title">{{tag.name}}</h5>
+          <a href = "{% url 'api:tag_detail' tag_id=tag.id%}" class="btn btn-outline-light">More</a>
+          <a href = "{% url 'api:tag_delete' tag_id=tag.id%}" class="btn btn-danger">delete</a>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}
